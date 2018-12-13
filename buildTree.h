@@ -1,5 +1,6 @@
 Node *makeNode( double x, double y, int level );
 void makeChildren( Node *parent );
+void growTree(Node *node);
 
 // make a node at given location (x,y) and level
 Node *makeNode( double x, double y, int level ) {
@@ -34,6 +35,34 @@ void makeChildren( Node *parent ) {
   parent->child[3] = makeNode( x,y+hChild, level+1 );
 
   return;
+}
+
+//growing the tree
+void growTree(Node *node){
+	int i;
+	for(i=0;i<4;i++){
+		if(node->child[i]==NULL){
+			double x = node->xy[0];
+			double y = node->xy[1];
+			int level = node->level;
+			double hChild = pow(2.0,-(level+1));
+			if(i == 1){
+				x = x+hChild;
+			}
+			else if(i == 2){
+				x = x+hChild;
+				y = y+hChild;
+			}
+			else if(i == 3){
+				y = y+hChild;
+			}
+			node->child[i] = makeNode(x,y,level+1);
+		}
+		else{
+			growTree(node->child[i]);
+		}
+	}
+	return;
 }
 
 
