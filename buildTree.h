@@ -2,7 +2,6 @@ Node *makeNode( double x, double y, int level );
 void makeChildren( Node *parent );
 void growTree(Node *node);
 void destroyTree(Node *node);
-void removeChildren(Node *parent);
 
 // make a node at given location (x,y) and level
 Node *makeNode( double x, double y, int level ) {
@@ -66,7 +65,7 @@ void growTree(Node *node){
 	}
 	return;
 }
-
+	
 //destroy the tree
 void destroyTree(Node *node){
 	int i;
@@ -78,14 +77,6 @@ void destroyTree(Node *node){
 	free(node);
 	return;
 }
-//remove children from a node
-void removeChildren(Node *parent){
-	int i;
-	for(i=0;i<4;i++){
-		if(parent->child[i]!=NULL){
-			free(parent->child[i]);
-			parent->child[i]=NULL;
-		}
-	}
-	return;
-}
+
+
+
