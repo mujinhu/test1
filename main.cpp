@@ -12,7 +12,7 @@ int main(int argc, char **argv){
 	//make a tree
 	makeChildren(head);
 	growTree(head);
-	destroyTree(head);
+	removeChildren(head);
 	writeTree(head);
 	return 0;	
 }
