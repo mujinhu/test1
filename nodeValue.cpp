@@ -4,6 +4,7 @@ void flag(Node *node);
 int leaf(Node *node);
 int children(Node *node);
 void adjust(Node *node);
+void adapt(Node *node);
 
 double nodeValue( Node *node, double time );
 double value( double x, double y, double time );
@@ -98,5 +99,26 @@ void adjust(Node *node){
 	}
 }
 
+// adapt to implement the algorithm described
+int maxLevel = 6;
+int adapta = 0;
+int adaptr = 0;
+void adapt(Node *node){
+	int i;
+	if((leaf(node) && node->flag==1) && node->level<maxLevel){
+		addChildren(node);
+		adapta = adapta + 4;
+		return;
+	}
+	else if(children(node)){
+		removeChildren(node);
+		adaptr = adaptr + 4;
+		return;
+	}
+	for(i=0;i<4;i++){
+		if(node->child[i]!=NULL)
+			adapt(node->child[i]);
+	}
+}
 
 

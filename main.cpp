@@ -12,8 +12,8 @@ int main(int argc, char **argv){
 	//make a tree
 	makeChildren(head);
 	growTree(head);
-	removeChildren(head);
-	adjust(head);
+	growTree(head);
+	adapt(head);
 	writeTree(head);
 	return 0;	
 }
